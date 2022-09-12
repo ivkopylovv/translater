@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,5 +16,5 @@ public class TranslationResult {
     private String sourceLanguageCode;
     private String targetLanguageCode;
     private Integer ipAddress;
-    private List<TranslationResultDetail> translationResultDetails;
+    private Date requestDate;
 }
