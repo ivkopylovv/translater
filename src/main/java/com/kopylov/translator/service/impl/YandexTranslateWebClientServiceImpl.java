@@ -2,8 +2,8 @@ package com.kopylov.translator.service.impl;
 
 import com.kopylov.translator.constants.TranslateApi;
 import com.kopylov.translator.dto.request.YandexTranslateTemplate;
-import com.kopylov.translator.dto.response.YandexTranslatedWordsDTO;
-import com.kopylov.translator.dto.response.YandexTranslationDTO;
+import com.kopylov.translator.dto.response.YandexTranslatedWordDTO;
+import com.kopylov.translator.dto.response.YandexTranslateResultDTO;
 import com.kopylov.translator.service.YandexTranslateWebClientService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -30,16 +30,16 @@ public class YandexTranslateWebClientServiceImpl implements YandexTranslateWebCl
                 new YandexTranslateTemplate(folderId, sourceWords, targetLanguageCode);
         WebClient client = WebClient.create(TranslateApi.YANDEX_API);
 
-        YandexTranslationDTO result = client.post()
+        YandexTranslateResultDTO result = client.post()
                 .header(AUTHORIZATION, "Bearer " + token)
                 .accept(APPLICATION_JSON)
                 .body(BodyInserters.fromValue(template))
                 .retrieve()
-                .bodyToMono(YandexTranslationDTO.class)
+                .bodyToMono(YandexTranslateResultDTO.class)
                 .block();
 
         return result.getTranslations().stream()
-                .map(YandexTranslatedWordsDTO::getText)
+                .map(YandexTranslatedWordDTO::getText)
                 .collect(Collectors.toList());
     }
 }
