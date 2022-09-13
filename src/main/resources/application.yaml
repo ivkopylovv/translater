@@ -11,5 +11,10 @@ spring:
     driver-class-name: org.h2.Driver
     username: public-test
     password: public-test
+yandex:
+  api:
+    token: public-test
+  folder:
+    id: public-test
 server:
   port: 8081
