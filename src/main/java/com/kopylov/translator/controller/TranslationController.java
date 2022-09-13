@@ -27,7 +27,7 @@ public class TranslationController {
     public ResponseEntity translateString(@RequestBody TranslateStringDTO dto, HttpServletRequest request) {
         String source = dto.getSourceString();
         String options = dto.getTranslationOptions();
-        String ipAddress = request.getLocalAddr();
+        String ipAddress = request.getRemoteAddr();
 
         ValidateInputHelper.checkTranslationRequest(source, options);
 
