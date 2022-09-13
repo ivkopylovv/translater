@@ -17,9 +17,12 @@ public class TranslationResultDetailDAOImpl implements TranslationResultDetailDA
     @Transactional
     @Override
     public void saveAll(List<TranslationResultDetail> details) {
-        for (TranslationResultDetail detail: details) {
-            jdbcTemplate.update(
-                    "INSERT INTO translation_result_details VALUES (?, ?, ?)",
+        String query = "INSERT INTO translation_result_details " +
+                "(source_word, translated_word, translation_result_id)" +
+                "VALUES (?, ?, ?)";
+
+        for (TranslationResultDetail detail : details) {
+            jdbcTemplate.update(query,
                     detail.getSourceWord(),
                     detail.getTranslatedWord(),
                     detail.getTranslationResultId()
