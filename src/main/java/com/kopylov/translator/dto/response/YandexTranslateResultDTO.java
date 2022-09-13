@@ -11,6 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class YandexTranslationDTO {
-    private List<YandexTranslatedWordsDTO> translations;
+public class YandexTranslateResultDTO {
+    private List<YandexTranslatedWordDTO> translations;
 }

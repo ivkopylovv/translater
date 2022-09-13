@@ -1,4 +1,4 @@
-package com.kopylov.translator.dto.response;
+package com.kopylov.translator.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class YandexTranslatedWordsDTO {
-    private String text;
-    private String detectedLanguageCode;
+public class TranslateStringDTO {
+    private String sourceString;
+    private String translationOptions;
 }
