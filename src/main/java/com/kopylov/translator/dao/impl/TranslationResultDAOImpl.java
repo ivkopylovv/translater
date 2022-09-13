@@ -20,10 +20,9 @@ public class TranslationResultDAOImpl implements TranslationResultDAO {
     @Transactional
     @Override
     public Long save(TranslationResult trRes) {
-        String query =
-                "INSERT INTO translation_results " +
-                        "(source_language_code, target_language_code, ip_address, request_date) " +
-                        "VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO translation_results " +
+                "(source_language_code, target_language_code, ip_address, request_date) " +
+                "VALUES (?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(connection -> {

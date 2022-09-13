@@ -1,9 +1,11 @@
 package com.kopylov.translator.service.impl;
 
+import com.kopylov.translator.constants.ErrorMessage;
 import com.kopylov.translator.constants.TranslateApi;
 import com.kopylov.translator.dto.request.YandexTranslateTemplate;
 import com.kopylov.translator.dto.response.YandexTranslatedWordDTO;
 import com.kopylov.translator.dto.response.YandexTranslateResultDTO;
+import com.kopylov.translator.exception.YandexTranslateApiException;
 import com.kopylov.translator.service.YandexTranslateWebClientService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -36,7 +38,8 @@ public class YandexTranslateWebClientServiceImpl implements YandexTranslateWebCl
                 .body(BodyInserters.fromValue(template))
                 .retrieve()
                 .bodyToMono(YandexTranslateResultDTO.class)
-                .block();
+                .blockOptional()
+                .orElseThrow(() -> new YandexTranslateApiException(ErrorMessage.YANDEX_SERVER_ERROR));
 
         return result.getTranslations().stream()
                 .map(YandexTranslatedWordDTO::getText)
