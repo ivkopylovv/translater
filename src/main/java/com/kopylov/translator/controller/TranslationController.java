@@ -1,7 +1,7 @@
 package com.kopylov.translator.controller;
 
 import com.kopylov.translator.dto.request.TranslateStringDTO;
-import com.kopylov.translator.dto.response.TranslatedStringDTO;
+import com.kopylov.translator.dto.response.TranslateResultDTO;
 import com.kopylov.translator.helper.StringHelper;
 import com.kopylov.translator.helper.ValidateInputHelper;
 import com.kopylov.translator.service.TranslationResultService;
@@ -24,7 +24,7 @@ public class TranslationController {
     private final YandexTranslateWebClientService yandexTranslateWebClientService;
 
     @PostMapping()
-    public ResponseEntity translateString(@RequestBody TranslateStringDTO dto, HttpServletRequest request) {
+    public ResponseEntity<TranslateResultDTO> translateString(@RequestBody TranslateStringDTO dto, HttpServletRequest request) {
         String source = dto.getSourceString();
         String options = dto.getTranslationOptions();
         String ipAddress = request.getRemoteAddr();
@@ -40,6 +40,6 @@ public class TranslationController {
                 .saveTranslateResult(sourceWords, translatedWords, splitOptions, ipAddress);
         String resultText = StringHelper.concatString(translatedWords);
 
-        return ResponseEntity.ok().body(new TranslatedStringDTO(resultText));
+        return ResponseEntity.ok().body(new TranslateResultDTO(resultText));
     }
 }

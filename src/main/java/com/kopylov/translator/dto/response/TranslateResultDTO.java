@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class TranslatedStringDTO {
+public class TranslateResultDTO {
     private String text;
 }

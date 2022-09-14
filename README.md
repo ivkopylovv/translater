@@ -4,6 +4,7 @@
 
 1. Установить Docker - https://www.docker.com/get-started/
 2. Создать файл `docker-compose.override.yml` с содержимым:
+
   ```yaml
 version: '3.4'
 
@@ -16,17 +17,23 @@ services:
       - H2_USERNAME=<Your H2 username>
       - H2_PASSWORD=<Your H2 password>
 ```
+
 3. Собрать проект, для этого выполнить команду:
+
   ```sh
   docker compose build
   ```
+
 4. Запустить собранный проект:
+
   ```sh
   docker compose up
   ```
+
 5. Для перевода слов использовать endpoint POST `http://<server>:8081/translator/v1`
 
 Входные данные:
+
 ```json
 {
     "sourceString": "Example of input data",
@@ -35,6 +42,7 @@ services:
 ```
 
 Выходные данные:
+
 ```json
 {
     "text": "Пример от вход данные"

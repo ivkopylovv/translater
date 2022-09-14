@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS translation_results (
     id INT NOT NULL AUTO_INCREMENT,
     source_language_code CHAR(2) NOT NULL,
     target_language_code CHAR(2) NOT NULL,
-    ip_address CHAR(20) NOT NULL,
+    ip_address VARCHAR(45) NOT NULL,
     request_date DATETIME NOT NULL,
     CONSTRAINT translation_results_pk
         PRIMARY KEY (id)

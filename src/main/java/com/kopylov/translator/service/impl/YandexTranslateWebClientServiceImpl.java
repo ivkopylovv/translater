@@ -2,9 +2,9 @@ package com.kopylov.translator.service.impl;
 
 import com.kopylov.translator.constants.ErrorMessage;
 import com.kopylov.translator.constants.TranslateApi;
-import com.kopylov.translator.dto.request.YandexTranslateTemplate;
-import com.kopylov.translator.dto.response.YandexTranslatedWordDTO;
+import com.kopylov.translator.dto.request.YandexTranslateDTO;
 import com.kopylov.translator.dto.response.YandexTranslateResultDTO;
+import com.kopylov.translator.dto.response.YandexTranslatedWordDTO;
 import com.kopylov.translator.exception.YandexTranslateApiException;
 import com.kopylov.translator.service.YandexTranslateWebClientService;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,8 +28,8 @@ public class YandexTranslateWebClientServiceImpl implements YandexTranslateWebCl
 
     @Override
     public List<String> getTranslatedWords(String targetLanguageCode, List<String> sourceWords) {
-        YandexTranslateTemplate template =
-                new YandexTranslateTemplate(folderId, sourceWords, targetLanguageCode);
+        YandexTranslateDTO template =
+                new YandexTranslateDTO(folderId, sourceWords, targetLanguageCode);
         WebClient client = WebClient.create(TranslateApi.YANDEX_API);
 
         YandexTranslateResultDTO result = client.post()

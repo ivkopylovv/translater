@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class YandexTranslateTemplate {
+public class YandexTranslateDTO {
     private String folderId;
     private List<String> texts;
     private String targetLanguageCode;
